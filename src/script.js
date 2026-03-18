@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentValue = "";
 
   function evaluateResult(value) {
-    const convertedValue = currentValue
-      .replace("×", "*")
-      .replace("÷", "/")
-      .replace("%", "*0.01")
-      .replace("−", "-");
+   const convertedValue = currentValue
+  .replace(/×/g, "*")
+  .replace(/÷/g, "/")
+  .replace(/%/g, "*0.01")
+  .replace(/−/g, "-");
 
     const result = eval(convertedValue);
 
