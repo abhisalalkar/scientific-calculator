@@ -1,20 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM is fully loaded and ready");
-
   const display = document.getElementById("cal-display");
   const button = document.getElementsByClassName("btn");
 
   let currentValue = "";
 
-  function evaluateResult(value) {
-   const convertedValue = currentValue
-  .replace(/×/g, "*")
-  .replace(/÷/g, "/")
-  .replace(/%/g, "*0.01")
-  .replace(/−/g, "-");
+  function evaluateResult() {
+    const convertedValue = currentValue
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/")
+      .replace(/%/g, "*0.01")
+      .replace(/−/g, "-");
 
     const result = eval(convertedValue);
-
     currentValue = result.toString();
     display.value = currentValue;
   }
@@ -27,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (value == "AC") {
         currentValue = "";
+        display.value = currentValue;
+      } else if (value == "⌫") {
+        currentValue = currentValue.slice(0, -1);
         display.value = currentValue;
       } else if (value == "=") {
         evaluateResult();
